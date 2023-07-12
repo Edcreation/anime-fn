@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
-import axios from "axios"
+import api from "../../../utils/axios.config"
 import store from "../../store"
 
 type InitialState = {
@@ -39,7 +39,7 @@ export const postComment = createAsyncThunk('anime/add_comment', async (data: { 
         comment: data.comment
     }
 
-    return axios.post(`http://localhost:5000/comments/create/${data.id}`, comment, config).then((response) => {
+    return api.post(`/comments/create/${data.id}`, comment, config).then((response) => {
         return response.data.data
     })
     .catch((error) => {

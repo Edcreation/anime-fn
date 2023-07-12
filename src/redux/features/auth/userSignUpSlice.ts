@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
-import axios from "axios"
+import api from "../../../utils/axios.config"
 
 type InitialState = {
     loading: boolean
@@ -24,7 +24,7 @@ function rejectWithValue(error: string) {
 }
 
 export const signup = createAsyncThunk('user/signup', async (data: USER) => {
-    return axios.post('http://localhost:5000/users/signup', data).then((response) => {
+    return api.post('/users/signup', data).then((response) => {
         return response.data.data
     })
     .catch((error) => {

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit"
-import axios from "axios"
+import api from "../../../utils/axios.config"
 
 type InitialState = {
     loading: boolean
@@ -26,7 +26,7 @@ function rejectWithValue(error: string) {
 }
 
 export const topComments = createAsyncThunk('anime/topcomment', async () => {
-    return axios.get(`http://localhost:5000/comments/top?limit=8`).then((response) => {
+    return api.get(`/comments/top?limit=8`).then((response) => {
         return response.data.data
     })
     .catch((error) => {

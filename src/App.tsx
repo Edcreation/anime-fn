@@ -22,7 +22,7 @@ function App() {
       <Suspense fallback={ <Spinner /> }>
         <Routes>
           <Route path='/browse/*' element={ <Browse /> }></Route>
-          <Route path='/home' element={ <Home /> }></Route>
+          <Route path='/' element={ <Home /> }></Route>
           <Route path='/auth/*' element={ isLoggedIn() ? <Home /> : <MainAuth /> }></Route>
           <Route path='/single/:id' element={ <SinglePage /> }></Route>
         </Routes>
